@@ -1,0 +1,58 @@
+class Solution {
+public:
+    vector<int> findDiagonalOrder(vector<vector<int>>& mat) {
+        int m = mat.size();
+        int n = mat[0].size();
+        vector<int> res;
+        int row=0, col=0;
+        bool up = true;
+        
+        if(m == 0 && n==0)
+            return {};
+        
+        while(row<m && col<n){
+            
+            //digonal goining upword 
+            if(up){
+                while(row > 0 && col < n-1 ){
+                    res.push_back(mat[row][col]);
+                    row--;
+                    col++;
+                }
+                //edge case for last element when condition failed
+                res.push_back(mat[row][col]);
+                //set digonal to next co-ordinates
+                  if(col == n -1 )
+                {
+                    row++;
+                }
+                else
+                {
+                    col++;
+                }
+            }
+              //digonal goining downword 
+            else{
+                while(row < m-1 && col > 0 ){
+                    res.push_back(mat[row][col]);
+                    row++;
+                    col--;
+                }
+                res.push_back(mat[row][col]);
+                  if(row == m -1 )
+                {
+                    col++;
+                }
+                else
+                {
+                    row++;
+                }
+                
+            }
+             //change direction
+            up = !up;
+            
+        }
+        return res;
+    }
+};
