@@ -1,4 +1,5 @@
 class Solution {
+Using namespace std;
 public:
     vector<int> replaceElements(vector<int>& arr) {
         int n=arr.size(),temp,mx=-1;
