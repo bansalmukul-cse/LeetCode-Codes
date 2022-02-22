@@ -66,5 +66,3 @@ public:
 };
 
 
-
-//https://leetcode.com/problems/remove-k-digits/discuss/1779871/C%2B%2Bor-Detailed-Explanaion-w-MANY-EXAMPLES-and-DIAGRAMS-or-STACK
