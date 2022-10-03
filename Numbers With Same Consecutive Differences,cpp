@@ -1,0 +1,51 @@
+class Solution {
+public:
+    void dfs_fun(int n,int k,int curr,int curr_len,int prev, vector<int> &ans){
+    if(curr_len==n-1){
+            ans.push_back(curr);
+            return;
+        }
+        
+        // There were two conditions where to add k or subtract k
+        // which ever give us the valid result we take that.
+        int next=prev+k;
+        
+        if(next<10){
+            dfs_fun(n,k,curr*10+next,curr_len+1,next,ans);
+        }
+        
+        next=prev-k;
+        
+        // Here we have check k!=0 to avoid duplicacy.
+        // As we know that if k=0 then adding k or subtracting k will result in same number so thats why we check that condition.
+        if(next>=0 && k!=0){
+            dfs_fun(n,k,curr*10+next,curr_len+1,next,ans);
+        }
+        
+    }
+    
+    
+    vector<int> numsSameConsecDiff(int n, int k) {
+        // ans vector for storing the valid numbers satisfying the condition.
+        vector<int> ans;
+        
+        // if n is 1 then our answer is simply the numbers from 0 to 9 as now there is no role of k in that case.
+        
+        if(n==1){
+            for(int i=0;i<=9;i++){
+                ans.push_back(i);
+            }
+            return ans;
+        }
+        
+        // dfs call for calculating the valid numbers.
+        for(int i=1;i<=9;i++){
+            dfs_fun(n,k,i,0,i,ans);
+        }
+        
+		// Returning the final result
+		
+        return ans;
+        
+    }
+};
